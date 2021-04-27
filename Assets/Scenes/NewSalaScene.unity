@@ -690,7 +690,7 @@ GameObject:
   - component: {fileID: 1509815903}
   - component: {fileID: 1509815902}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Magician
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -725,7 +725,7 @@ Animator:
   m_GameObject: {fileID: 1509815900}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 74f931acd078eca4a9bf2d2c9b140690, type: 2}
+  m_Controller: {fileID: 9100000, guid: 7516003e84d2c8f43a5ad5db70223e6e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
