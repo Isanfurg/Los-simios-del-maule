@@ -548,7 +548,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1822251274}
         m_TargetAssemblyTypeName: UIScenes, Assembly-CSharp
         m_MethodName: LoadScene
         m_Mode: 5
@@ -783,6 +783,7 @@ GameObject:
   - component: {fileID: 1822251273}
   - component: {fileID: 1822251272}
   - component: {fileID: 1822251271}
+  - component: {fileID: 1822251274}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -838,6 +839,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1822251274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1822251270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d00c8c91a6f9a44998c3cdff76ef644, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1852704279
 GameObject:
   m_ObjectHideFlags: 0
@@ -895,7 +908,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: f40ddb9c79ae0d14b972c3d8a38c8225, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c815f85703a859e47918c096f5327373, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
