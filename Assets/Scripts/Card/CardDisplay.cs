@@ -10,7 +10,7 @@ public class CardDisplay : MonoBehaviour
     public Text CardDescription;
     public Text CardAtk;
     public Text CardDef;
-    public Card card;
+
 
     void Start()
     {
@@ -19,11 +19,10 @@ public class CardDisplay : MonoBehaviour
 
     void renderCard() 
     {
-        CardArt.sprite = card.cardArt;
-        CardName.text = card.cardName;
-        CardDescription.text = card.cardDescription;
-        CardAtk.text = card.cardAtk;
-        CardDef.text = card.cardDef;
+        CardName.text = "Nombre de la carta";
+        CardDescription.text = "Descripción de la carta";
+        CardAtk.text = "99999";
+        CardDef.text = "99999";
     }
 
 }
