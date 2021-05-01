@@ -21,6 +21,9 @@ EditorBuildSettings:
     path: Assets/Scenes/JoinSalaScene.unity
     guid: f75839c6a4c56814595b01a4391facc2
   - enabled: 1
+    path: Assets/Scenes/ViewMazosScene.unity
+    guid: 7235e67cb4a46cf4c86fe40bb8206800
+  - enabled: 1
     path: Assets/Scenes/CardMakerScene.unity
     guid: ab99677349252874cb6e9f000afc0242
   m_configObjects: {}
