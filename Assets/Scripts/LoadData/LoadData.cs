@@ -10,8 +10,11 @@ public class LoadData : MonoBehaviour
 {
     // Start is called before the first frame update
     static CardList cards = null;
+    //info img
     public static List<JsonReaderYugi.Card> cardList;
+    //img high 
     public static List<Sprite> bigCardsSprites = new List<Sprite>();
+    //img low
     public static List<Sprite> smallCardsSprites = new List<Sprite>();
 
     void Start()

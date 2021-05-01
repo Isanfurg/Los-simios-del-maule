@@ -29,6 +29,7 @@ public class CardMaker : MonoBehaviour
         cardList = LoadData.cardList;
         bigCardsSprites = LoadData.bigCardsSprites;
         smallCardsSprites = LoadData.smallCardsSprites;
+        
         Debug.Log("cardList: "+cardList.Count);
     }
 
