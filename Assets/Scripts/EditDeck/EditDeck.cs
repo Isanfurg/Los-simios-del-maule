@@ -49,6 +49,19 @@ public class EditDeck : MonoBehaviour
         
     }
 
+    public void startAux()
+    {
+        GameObject newObj;
+        String pathC = "cards.dat";
+        cards = Serializator.DeserializeCards(pathC);
+        cardList = cards.cardList;
+        foreach (JsonReaderYugi.Card c in cardList)
+        {
+            newObj = (GameObject)Instantiate(preFab, transform);
+            newObj.GetComponent<Image>().sprite = LoadNewSprite("Assets/Resources/SmallCards/" + c.Id + ".jpg");
+
+        }
+    }
     public Sprite LoadNewSprite(string FilePath, float PixelsPerUnit = 100.0f)
     {
 
