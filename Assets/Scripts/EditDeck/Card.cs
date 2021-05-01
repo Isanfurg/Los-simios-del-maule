@@ -82,23 +82,6 @@ namespace JsonReaderYugi
                    CardUrl == card.CardUrl;
         }
 
-        /*public override int GetHashCode()
-        {   
-
-            HashCode hash = new HashCode();
-            hash.Add(Name);
-            hash.Add(Type);
-            hash.Add(Desc);
-            hash.Add(Def);
-            hash.Add(Atk);
-            hash.Add(Level);
-            hash.Add(Race);
-            hash.Add(Attribute);
-            hash.Add(SmallCardUrl);
-            hash.Add(CardUrl);
-            return hash.ToHashCode();
-        }*/
-
 
     }
 
