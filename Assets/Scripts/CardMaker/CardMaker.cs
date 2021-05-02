@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using UnityEditor;
 using System.IO;
 using JsonReaderYugi;
+using UnityEngine.SceneManagement;
 
 public class CardMaker : MonoBehaviour
 {
@@ -212,6 +213,11 @@ public class CardMaker : MonoBehaviour
                 return generateID();
         }
         return id;
+    }
+
+    public void CancelButton(string SceneName)
+    {
+        SceneManager.LoadScene(SceneName);
     }
 
 }
