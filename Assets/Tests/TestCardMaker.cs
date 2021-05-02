@@ -45,5 +45,13 @@ public class TestCardMaker
         Assert.AreEqual(testInt, 2021);
     }
 
+    [Test]
+    public void TestReadCardDef()
+    {
+        string test = "1202";
+        int.TryParse(test, out int testInt);
+        Assert.AreEqual(testInt, 1202);
+    }
+
 
 }
