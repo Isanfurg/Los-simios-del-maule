@@ -34,13 +34,13 @@ public class RenderDeck : MonoBehaviour
         string path = "deck.dat";
         Deck deck = Serializator.DeserializeDeck(path);
         List<string> cardIds = deck.Cards;
-
         GameObject smallCardImage;
         foreach (string cardId in cardIds)
         {
             Debug.Log(cardId);
             smallCardImage = (GameObject)Instantiate(preFab, transform);
             smallCardImage.GetComponent<Image>().sprite = FindSmallCard(cardId);
+            
         }
     }
 
