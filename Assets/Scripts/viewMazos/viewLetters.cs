@@ -1,21 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
+
 public class viewLetters : MonoBehaviour
 {
-    public GameObject preF2;
+    public GameObject preFab2;
     public EditDeck editDeck;
+    public Transform transform2;
     // Start is called before the first frame update
     void Start()
     {
-        aux();
+    
     }
     public void aux()
     {
-        //Console.WriteLine("LLEga");
         editDeck = GameObject.FindGameObjectWithTag("TagA").GetComponent<EditDeck>();
-        editDeck.startAux(preF2);
+        preFab2 = GameObject.FindObjectOfType<GameObject>();
+        editDeck.startAux(preFab2,transform2);
     }
     // Update is called once per frame
     void Update()

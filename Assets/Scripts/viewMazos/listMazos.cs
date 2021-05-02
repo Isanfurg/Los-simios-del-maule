@@ -8,13 +8,15 @@ public class listMazos : MonoBehaviour
 
     // Start is called before the first frame update
     public GameObject pref;
+  
     public ArrayList mazos;
+  
     public viewLetters viewLetters;
-    private EditDeck edit;
     public void TaskOnClick()
     {
         viewLetters = GameObject.FindGameObjectWithTag("TagB").GetComponent<viewLetters>();
-        viewLetters.aux();  
+        viewLetters.aux();
+
     }
     public void Start()
     {
