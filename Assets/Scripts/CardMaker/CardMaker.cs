@@ -150,34 +150,41 @@ public class CardMaker : MonoBehaviour
     {
         yield return waitTime;
         yield return frameEnd;
-        int width = 475;
-        int height = 670;
-        Texture2D tex = new Texture2D(width, height, TextureFormat.RGB24, false);
-        Rect sel = new Rect();
-        sel.width = width;
-        sel.height = height;
-        sel.x = CardTemplate.transform.position.x - 235;
-        sel.y = CardTemplate.transform.position.y - 335;
 
-        tex.ReadPixels(sel, 0, 0);
-
-        byte[] bytes = tex.EncodeToJPG();
-
-        SaveCardCreated(bytes);
-       // CharCount.text = "Carta guardada";
-        /*try
+        try
         {
             
-            
+            int width = 475;
+            int height = 670;
+            Texture2D tex = new Texture2D(width, height, TextureFormat.RGB24, false);
+            Rect sel = new Rect();
+            sel.width = width;
+            sel.height = height;
+            sel.x = CardTemplate.transform.position.x - 235;
+            sel.y = CardTemplate.transform.position.y - 335;
+
+            tex.ReadPixels(sel, 0, 0);
+
+            byte[] bytes = tex.EncodeToJPG();
+
+            SaveCardCreated(bytes);
+            CharCount.text = "Carta guardada";
+            CardNameInput.text = "";
+            CardDescriptionInput.text = "";
+            CardAtkInput.text = "";
+            CardDefInput.text = "";
+            CardDescriptionInput.text = "";
+            CardTemplate.transform.Find("CardArt").gameObject.GetComponent<UnityEngine.UI.Image>().sprite = null;
+
         }
         catch (Exception e)
         {
             Debug.Log(e.Message);
             CharCount.text = "Error al guardar la carta";
-        }*/
-        
+        }
 
-        
+
+
     }
 
     public void SaveCardCreated(byte[] bytes)

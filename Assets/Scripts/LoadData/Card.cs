@@ -107,4 +107,13 @@ namespace JsonReaderYugi
     {
         public List<Card> cardList;
     }
+
+    [Serializable]
+    public class Deck
+    {
+        public string Id;
+        public string Name;
+        public List<string> Cards;
+    }
+
 }
