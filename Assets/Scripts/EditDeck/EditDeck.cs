@@ -42,6 +42,7 @@ public class EditDeck : MonoBehaviour
 
 
     }
+  
 
     // Update is called once per frame
     void Update()
@@ -49,7 +50,7 @@ public class EditDeck : MonoBehaviour
         
     }
 
-    public void startAux()
+    public void startAux(GameObject preFab2)
     {
         GameObject newObj;
         String pathC = "cards.dat";
@@ -57,8 +58,10 @@ public class EditDeck : MonoBehaviour
         cardList = cards.cardList;
         foreach (JsonReaderYugi.Card c in cardList)
         {
-            newObj = (GameObject)Instantiate(preFab, transform);
+            newObj = (GameObject)Instantiate(preFab2, transform);
             newObj.GetComponent<Image>().sprite = LoadNewSprite("Assets/Resources/SmallCards/" + c.Id + ".jpg");
+            newObj.name = c.Id;
+            cardBigImages.Add(LoadNewSprite("Assets/Resources/Cards/" + c.Id + ".jpg"));
 
         }
     }

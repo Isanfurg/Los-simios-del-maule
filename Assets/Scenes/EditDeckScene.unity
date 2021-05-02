@@ -1354,7 +1354,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 139, y: -307}
+  m_AnchoredPosition: {x: 149, y: -328}
   m_SizeDelta: {x: 237.9964, y: 57.7321}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1075857871
@@ -1645,7 +1645,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Tu mazo
+  m_Text: 'TU MAZO
+
+'
 --- !u!222 &1157692892
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1665,6 +1667,7 @@ GameObject:
   - component: {fileID: 1167566653}
   - component: {fileID: 1167566652}
   - component: {fileID: 1167566651}
+  - component: {fileID: 1167566654}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -1720,6 +1723,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1167566654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167566650}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d00c8c91a6f9a44998c3cdff76ef644, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1216434048
 GameObject:
   m_ObjectHideFlags: 0
@@ -2192,7 +2207,7 @@ MonoBehaviour:
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 168, y: 246}
-  m_Spacing: {x: 10, y: 10}
+  m_Spacing: {x: 80, y: 10}
   m_Constraint: 0
   m_ConstraintCount: 2
 --- !u!156049354 &1475949460
@@ -2903,7 +2918,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -149, y: -307}
+  m_AnchoredPosition: {x: -143, y: -328}
   m_SizeDelta: {x: 237.9964, y: 57.7321}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2028808959
