@@ -8,10 +8,10 @@ using UnityEngine.UI;
 
 public class viewLetters : MonoBehaviour
 {
-    GameObject preff;
+    public GameObject preff;
     CardList cards;
-    List<JsonReaderYugi.Card> cardList;
-    List<Sprite> cardBigImages = new List<Sprite>();
+    public List<JsonReaderYugi.Card> cardList;
+    public List<Sprite> cardBigImages = new List<Sprite>();
     // Start is called before the first frame update
     void Start()
     {
