@@ -10,13 +10,14 @@ public class RenderDeck : MonoBehaviour
     static List<Card> cardList;
     static List<Sprite> bigCardsSprites;
     static List<Sprite> smallCardsSprites;
+    public static Deck deck;
     void Start()
     {
         cardList = LoadData.cardList;
         bigCardsSprites = LoadData.bigCardsSprites;
         smallCardsSprites = LoadData.smallCardsSprites;
 
-        RenderSelectedDeck();
+        RenderSelectedDeck("deck.dat");
 
         
         /*Deck deck = new Deck();
@@ -29,10 +30,10 @@ public class RenderDeck : MonoBehaviour
         
     }
 
-    public void RenderSelectedDeck()
+    public void RenderSelectedDeck(string fileName)
     {
-        string path = "deck.dat";
-        Deck deck = Serializator.DeserializeDeck(path);
+        string path = "Assets/Data/Decks/"+fileName;
+        deck = Serializator.DeserializeDeck(path);
         List<string> cardIds = deck.Cards;
         GameObject smallCardImage;
         foreach (string cardId in cardIds)
