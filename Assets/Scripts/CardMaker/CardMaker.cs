@@ -12,13 +12,18 @@ public class CardMaker : MonoBehaviour
 {
 
     public GameObject CardTemplate;
+    public GameObject CardLevel;
     public InputField CardNameInput;
     public InputField CardDescriptionInput;
     public InputField CardAtkInput;
     public InputField CardDefInput;
+    public InputField CardTypeInput;
+    public Dropdown CardLevelInput;
     public Text CharCount;
     private string cardName;
     private string cardDescription;
+    private string cardType;
+    private int cardLevel;
     private int cardAtk;
     private int cardDef;
     static List<JsonReaderYugi.Card> cardList;
@@ -30,7 +35,8 @@ public class CardMaker : MonoBehaviour
         cardList = LoadData.cardList;
         bigCardsSprites = LoadData.bigCardsSprites;
         smallCardsSprites = LoadData.smallCardsSprites;
-        Debug.Log("cardList: "+cardList.Count);
+
+        
     }
 
     // Update is called once per frame
@@ -102,6 +108,35 @@ public class CardMaker : MonoBehaviour
         }
     }
 
+    public void ReadCardLevel()
+    {
+        foreach (Transform child in CardLevel.transform)
+        {
+            Destroy(child.gameObject);
+        }
+        cardLevel = CardLevelInput.value + 1;
+        for (int i = 0; i < cardLevel; i++)
+        {
+            GameObject star = new GameObject();
+            Sprite starSprite = LoadNewSprite("Assets/Images/UI/starball.png");
+            Image starImage = star.gameObject.AddComponent<Image>();
+            starImage.sprite = starSprite;
+            starImage.transform.SetParent(CardLevel.transform);
+            starImage.transform.localScale = new Vector3(1, 1, 1);
+        }
+    }
+
+    public void ReadCardType(string s)
+    {
+        CharCount.text = s.Length + "/20";
+        if (s.Length <= 20)
+        {         
+            cardType = s;
+            Text CardType = CardTemplate.transform.Find("CardType").gameObject.GetComponent<UnityEngine.UI.Text>();
+            CardType.text = "["+s+"]";            
+        }
+    }
+
     public void SelectImageButton() {
 
         string path = EditorUtility.OpenFilePanel("Seleccione una imagen", "", "jpg");
@@ -116,6 +151,8 @@ public class CardMaker : MonoBehaviour
         else
             CharCount.text = "Ningun campo de texto debe estar vacio";
     }
+
+
 
     public Sprite LoadNewSprite(string FilePath, float PixelsPerUnit = 100.0f) {
 
@@ -175,6 +212,7 @@ public class CardMaker : MonoBehaviour
             CardAtkInput.text = "";
             CardDefInput.text = "";
             CardDescriptionInput.text = "";
+            CardTypeInput.text = "";
             CardTemplate.transform.Find("CardArt").gameObject.GetComponent<UnityEngine.UI.Image>().sprite = null;
 
         }
@@ -196,11 +234,17 @@ public class CardMaker : MonoBehaviour
         card.Atk = cardAtk;
         card.Def = cardDef;
         card.Id = generateID().ToString();
+        card.Type = cardType;
+        card.Level = cardLevel;
+        cardList.Add(card);
+        CardList cl = new CardList();
+        cl.cardList = cardList;
+        Serializator.SerializeCards(cl);
         File.WriteAllBytes("Assets/Resources/Cards/" + card.Id + ".jpg", bytes);
         File.WriteAllBytes("Assets/Resources/SmallCards/" + card.Id + ".jpg", bytes);
-        cardList.Add(card);
         bigCardsSprites.Add(LoadNewSprite("Assets/Resources/Cards/" + card.Id + ".jpg"));
         smallCardsSprites.Add(LoadNewSprite("Assets/Resources/SmallCards/" + card.Id + ".jpg"));
+
     }
 
     private int generateID()
