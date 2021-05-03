@@ -9,6 +9,8 @@ TagManager:
   - TagB
   - ScrollView_viewLetters
   - preff
+  - contt
+  - TagC
   layers:
   - Default
   - TransparentFX

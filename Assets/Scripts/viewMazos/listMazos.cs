@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,7 +15,8 @@ public class listMazos : MonoBehaviour
     public viewLetters viewLetters;
     public void TaskOnClick()
     {
-        viewLetters = GameObject.FindGameObjectWithTag("TagB").GetComponent<viewLetters>();
+        viewLetters = GameObject.FindGameObjectWithTag("contt").GetComponent<viewLetters>();
+        //Thread.Sleep(4000);
         viewLetters.aux();
         
     }
