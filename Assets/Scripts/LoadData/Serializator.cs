@@ -21,5 +21,21 @@ namespace JsonReaderYugi
             ListOfCards = JsonUtility.FromJson<CardList>(jsonString);
             return ListOfCards;
         }
+
+        public static void SerializeDeck(Deck deck)
+        {
+            string jsonString = JsonUtility.ToJson(deck);
+            File.WriteAllText("Assets/Data/Decks/deck.dat", jsonString);
+        }
+
+        public static Deck DeserializeDeck(String path)
+        {
+            Deck deck;
+            String jsonString = File.ReadAllText(path);
+            deck = JsonUtility.FromJson<Deck>(jsonString);
+            return deck;
+        }
+
+        
     }
 }
