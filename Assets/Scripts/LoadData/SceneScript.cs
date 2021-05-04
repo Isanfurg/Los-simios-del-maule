@@ -25,7 +25,7 @@ public class SceneScript : MonoBehaviour
         int deckSize = deck.Cards.Count;
         if(deckSize >= 20 && deckSize <= 40)
         {
-            //Serializator.SerializeDeck(deck);
+            Serializator.SerializeDeck(deck);
             Alert.text = "Mazo guardado";
         }
         else
