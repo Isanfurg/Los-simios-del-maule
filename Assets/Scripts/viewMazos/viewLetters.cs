@@ -10,18 +10,20 @@ public class viewLetters : MonoBehaviour
 {
     public GameObject preff;
     CardList cards;
-    public List<JsonReaderYugi.Card> cardList;
-    public List<Sprite> cardBigImages = new List<Sprite>();
+    List<JsonReaderYugi.Card> cardList;
+    List<Sprite> cardBigImages = new List<Sprite>();
     // Start is called before the first frame update
     void Start()
     {
-        
+        aux();
     }
     public void aux()
     {
-        cards = new CardList();
-        cardList = new List<JsonReaderYugi.Card>();
-        cardBigImages = new List<Sprite>();
+        //Reiniciar ScrollView
+        foreach (Transform t in transform)
+        {
+            Destroy(t);
+        }
         GameObject smallCardImage;
         String pathC = "cards.dat";
         cards = Serializator.DeserializeCards(pathC);
@@ -42,7 +44,7 @@ public class viewLetters : MonoBehaviour
         /*GameObject p = GameObject.FindGameObjectWithTag("ScrollView_viewLetters").GetComponent<GameObject>();
         p.*/
     }
-    public Sprite LoadNewSprite(string FilePath, float PixelsPerUnit = 100.0f)
+    private Sprite LoadNewSprite(string FilePath, float PixelsPerUnit = 100.0f)
     {
 
         // Load a PNG or JPG image from disk to a Texture2D, assign this texture to a new sprite and return its reference
@@ -54,7 +56,7 @@ public class viewLetters : MonoBehaviour
         return NewSprite;
     }
 
-    public Texture2D LoadTexture(string FilePath)
+    private Texture2D LoadTexture(string FilePath)
     {
 
         // Load a PNG or JPG file from disk to a Texture2D
