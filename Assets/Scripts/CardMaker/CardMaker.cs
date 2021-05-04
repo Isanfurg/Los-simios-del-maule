@@ -7,6 +7,7 @@ using UnityEditor;
 using System.IO;
 using JsonReaderYugi;
 using UnityEngine.SceneManagement;
+using SFB;
 
 public class CardMaker : MonoBehaviour
 {
@@ -139,9 +140,15 @@ public class CardMaker : MonoBehaviour
 
     public void SelectImageButton() {
 
-        string path = EditorUtility.OpenFilePanel("Seleccione una imagen", "", "jpg");
+        //string path = EditorUtility.OpenFilePanel("Seleccione una imagen", "", "jpg");
+        var extensions = new[] {
+            new ExtensionFilter("Image Files", "png", "jpg", "jpeg" ),
+            new ExtensionFilter("Sound Files", "mp3", "wav" ),
+            new ExtensionFilter("All Files", "*" ),
+        };
+        var paths = StandaloneFileBrowser.OpenFilePanel("Open File", "", extensions, true);
         Image CardArt = CardTemplate.transform.Find("CardArt").gameObject.GetComponent<UnityEngine.UI.Image>();
-        CardArt.sprite = LoadNewSprite(path);
+        CardArt.sprite = LoadNewSprite(paths[0]);
     }
 
     public void SaveCardButton()
