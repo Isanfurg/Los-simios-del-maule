@@ -142,9 +142,7 @@ public class CardMaker : MonoBehaviour
 
         //string path = EditorUtility.OpenFilePanel("Seleccione una imagen", "", "jpg");
         var extensions = new[] {
-            new ExtensionFilter("Image Files", "png", "jpg", "jpeg" ),
-            new ExtensionFilter("Sound Files", "mp3", "wav" ),
-            new ExtensionFilter("All Files", "*" ),
+            new ExtensionFilter("Image Files", "png", "jpg", "jpeg" )
         };
         var paths = StandaloneFileBrowser.OpenFilePanel("Open File", "", extensions, true);
         Image CardArt = CardTemplate.transform.Find("CardArt").gameObject.GetComponent<UnityEngine.UI.Image>();
