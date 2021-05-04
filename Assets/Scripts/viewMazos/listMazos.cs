@@ -1,35 +1,39 @@
+using JsonReaderYugi;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using System.Threading;
 using UnityEngine;
 using UnityEngine.UI;
-using System;
+
 public class listMazos : MonoBehaviour
 {
 
     // Start is called before the first frame update
     public GameObject pref;
-    public ArrayList mazos;
-    
+    public viewLetters viewLetters;
+    public void TaskOnClick()
+    {
+        viewLetters = GameObject.FindGameObjectWithTag("contt").GetComponent<viewLetters>();
+        //Thread.Sleep(4000);
+        viewLetters.aux();
+        
+    }
     public void Start()
     {
 
-        for (int i = 0; i < 15; i++)
+       for(int i = 0; i < 15; i++)
         {
-            int randomIndex = 1;
-            string[] maz = new string[2];
-            maz[0] = "" + randomIndex;
-            maz[1] = "mazo " + i;
             
-            //button.transform.position = position;
-            //button.GetComponent<RectTransform>().SetSize(size);
-            //button.GetComponent<Button>().onClick.AddListener(method);
-
-            GameObject newButton = Instantiate(pref,transform) as GameObject;
-            newButton.name = "mazo " + i;
-            newButton.GetComponentInChildren<Text>().text = "mazo " + i;
-            newButton.SetActive(true);
+            GameObject newButton = Instantiate(pref, transform) as GameObject;
+            newButton.name = "mazo "+i;
+            newButton.GetComponentInChildren<Text>().text = "mazo "+i;
+            newButton.SetActive(true);  
+            Button btn = newButton.GetComponent<Button>();
+            btn.onClick.AddListener(TaskOnClick);
         }
-        
+           
 
     }
 }

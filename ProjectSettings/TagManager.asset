@@ -5,6 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - listName
+  - TagA
+  - TagB
+  - ScrollView_viewLetters
+  - preff
+  - contt
+  - TagC
   layers:
   - Default
   - TransparentFX

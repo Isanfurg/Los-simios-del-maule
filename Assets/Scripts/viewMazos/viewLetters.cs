@@ -6,65 +6,41 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EditDeck : MonoBehaviour
+public class viewLetters : MonoBehaviour
 {
-    public GameObject preFab;
+    public GameObject preff;
     CardList cards;
     public List<JsonReaderYugi.Card> cardList;
     public List<Sprite> cardBigImages = new List<Sprite>();
+    // Start is called before the first frame update
     void Start()
     {
-        /*String path = "CardsID.txt";
-        CardsLoader cLoader = new CardsLoader();
-        cLoader.StartDownload(path);
-        String pathC = "cards.dat";
-        cards = Serializator.DeserializeCards(pathC);
-        List<JsonReaderYugi.Card> ListOfCards = cards.cardList;
-        foreach (JsonReaderYugi.Card card in ListOfCards)
-        {
-            card.ToString();
-        }*/
         
+    }
+    public void aux()
+    {
+        cards = new CardList();
+        cardList = new List<JsonReaderYugi.Card>();
+        cardBigImages = new List<Sprite>();
         GameObject smallCardImage;
-        String pathC = "cards.dat";
-        cards = Serializator.DeserializeCards(pathC);
-        cardList = cards.cardList;
-        foreach(JsonReaderYugi.Card c in cardList) 
-        {
-            smallCardImage = (GameObject)Instantiate(preFab, transform);
-            smallCardImage.GetComponent<Image>().sprite = LoadNewSprite("Assets/Resources/SmallCards/"+c.Id+".jpg");
-            smallCardImage.name = c.Id;
-            cardBigImages.Add(LoadNewSprite("Assets/Resources/Cards/" + c.Id + ".jpg"));
-
-        }
-
-
-
-
-    }
-  
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-   public void startAux(GameObject preFab2, Transform transform2)
-    {
-        
-        GameObject newObj;
         String pathC = "cards.dat";
         cards = Serializator.DeserializeCards(pathC);
         cardList = cards.cardList;
         foreach (JsonReaderYugi.Card c in cardList)
         {
-            newObj = (GameObject)Instantiate(preFab2, transform2);
-            newObj.GetComponent<Image>().sprite = LoadNewSprite("Assets/Resources/SmallCards/" + c.Id + ".jpg");
-            newObj.name = c.Id;
+            smallCardImage = (GameObject)Instantiate(preff, transform);
+            smallCardImage.GetComponent<Image>().sprite = LoadNewSprite("Assets/Resources/SmallCards/" + c.Id + ".jpg");
+            smallCardImage.name = c.Id;
             cardBigImages.Add(LoadNewSprite("Assets/Resources/Cards/" + c.Id + ".jpg"));
-            
+
         }
+
+    }
+    // Update is called once per frame
+    void Update()
+    {
+        /*GameObject p = GameObject.FindGameObjectWithTag("ScrollView_viewLetters").GetComponent<GameObject>();
+        p.*/
     }
     public Sprite LoadNewSprite(string FilePath, float PixelsPerUnit = 100.0f)
     {
