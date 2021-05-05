@@ -11,6 +11,8 @@ TagManager:
   - preff
   - contt
   - TagC
+  - nameMazo
+  - add
   layers:
   - Default
   - TransparentFX

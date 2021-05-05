@@ -1,6 +1,9 @@
 using JsonReaderYugi;
+using Newtonsoft.Json;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -32,5 +35,25 @@ public class SceneScript : MonoBehaviour
         {
             Alert.text = "El mazo debe tener entre 20 y 40 cartas";
         }
+    }
+    public void SerializeDeck()
+    {
+        deck = RenderDeck.deck;
+
+        int deckSize = deck.Cards.Count;
+        if (deckSize >= 20 && deckSize <= 40)
+        {
+            string jsonString = JsonConvert.SerializeObject(deck, Formatting.Indented);
+            //Console.WriteLine(jsonString);
+            File.WriteAllText(addMazo.input.text + ".dat", jsonString);
+            Alert.text = "Mazo guardado";
+        }
+        else
+        {
+            Alert.text = "El mazo debe tener entre 20 y 40 cartas";
+        }
+        
+
+        //Console.WriteLine("Deck " + fileName + " Serializado Exitosamente!");
     }
 }

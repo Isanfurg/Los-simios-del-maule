@@ -11,17 +11,22 @@ public class RenderDeck : MonoBehaviour
     static List<Sprite> bigCardsSprites;
     static List<Sprite> smallCardsSprites;
     public static Deck deck;
+    public static int init = 0;
     void Start()
     {
         cardList = LoadData.cardList;
         bigCardsSprites = LoadData.bigCardsSprites;
         smallCardsSprites = LoadData.smallCardsSprites;
-
-        RenderSelectedDeck("deck.dat");
-
+        string name = addMazo.input.text + ".dat";
+        Debug.Log(name);
+        /*if(init == 0)
+        {
+            RenderSelectedDeck("deck.dat");
+            init = 1;
+        }*/
+        RenderSelectedDeck(name);
         
-        /*Deck deck = new Deck();
-        Serializator.SerializeDeck(deck);*/
+
     }
 
     // Update is called once per frame
@@ -32,8 +37,10 @@ public class RenderDeck : MonoBehaviour
 
     public void RenderSelectedDeck(string fileName)
     {
+        Debug.Log(fileName);
         string path = "Assets/Data/Decks/"+fileName;
         deck = Serializator.DeserializeDeck(path);
+ 
         List<string> cardIds = deck.Cards;
         GameObject smallCardImage;
         foreach (string cardId in cardIds)
@@ -41,8 +48,10 @@ public class RenderDeck : MonoBehaviour
             Debug.Log(cardId);
             smallCardImage = (GameObject)Instantiate(preFab, transform);
             smallCardImage.GetComponent<Image>().sprite = FindSmallCard(cardId);
-            
+
         }
+        
+       
     }
 
     public Sprite FindSmallCard(string cardId)
