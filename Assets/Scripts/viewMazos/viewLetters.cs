@@ -1,6 +1,5 @@
 using JsonReaderYugi;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
@@ -9,29 +8,30 @@ using UnityEngine.UI;
 public class viewLetters : MonoBehaviour
 {
     public GameObject preff;
-    CardList cards;
-    public List<JsonReaderYugi.Card> cardList;
+    public static Deck deck;
+    public List<String> cardList;
     public List<Sprite> cardBigImages = new List<Sprite>();
     // Start is called before the first frame update
     void Start()
     {
         
     }
-    public void aux()
+    public void aux(string deckName)
     {
-        cards = new CardList();
-        cardList = new List<JsonReaderYugi.Card>();
         cardBigImages = new List<Sprite>();
         GameObject smallCardImage;
-        String pathC = "cards.dat";
-        cards = Serializator.DeserializeCards(pathC);
-        cardList = cards.cardList;
-        foreach (JsonReaderYugi.Card c in cardList)
+        string pathC = "Assets/Data/Decks/" + deckName + ".dat";
+        Debug.Log("Nombre de mazo: " + deckName);
+        deck = Serializator.DeserializeDeck(pathC);
+        cardList = deck.Cards;
+        Debug.Log("Cantidad de cartas: " + cardList.Count);
+
+        foreach (string cardId in cardList)
         {
             smallCardImage = (GameObject)Instantiate(preff, transform);
-            smallCardImage.GetComponent<Image>().sprite = LoadNewSprite("Assets/Resources/SmallCards/" + c.Id + ".jpg");
-            smallCardImage.name = c.Id;
-            cardBigImages.Add(LoadNewSprite("Assets/Resources/Cards/" + c.Id + ".jpg"));
+            smallCardImage.GetComponent<Image>().sprite = LoadNewSprite("Assets/Resources/SmallCards/" + cardId + ".jpg");
+            smallCardImage.name = cardId;
+            cardBigImages.Add(LoadNewSprite("Assets/Resources/Cards/" + cardId + ".jpg"));
 
         }
 
