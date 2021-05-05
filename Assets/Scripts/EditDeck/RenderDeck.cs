@@ -1,4 +1,5 @@
 using JsonReaderYugi;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,7 +18,7 @@ public class RenderDeck : MonoBehaviour
         cardList = LoadData.cardList;
         bigCardsSprites = LoadData.bigCardsSprites;
         smallCardsSprites = LoadData.smallCardsSprites;
-        string name = addMazo.input.text + ".dat";
+        string name = addMazo.input.text;
         Debug.Log(name);
         /*if(init == 0)
         {
@@ -38,10 +39,30 @@ public class RenderDeck : MonoBehaviour
     public void RenderSelectedDeck(string fileName)
     {
         Debug.Log(fileName);
-        string path = "Assets/Data/Decks/"+fileName;
+        string path = "Assets/Data/Decks/"+fileName+".dat";
         deck = Serializator.DeserializeDeck(path);
- 
-        List<string> cardIds = deck.Cards;
+        Debug.Log(fileName);
+        List<string> cardIds;
+        try
+        {
+            cardIds = deck.Cards;
+        }
+        catch(Exception e)
+        {
+            Deck deckAux = new Deck();
+            deckAux.Id = "100";
+            deckAux.Name = fileName;
+            deckAux.Cards = new List<string>();
+            foreach (Card c in LoadData.cardList)
+            {
+                deckAux.Cards.Add(c.id);
+                break;
+            }
+            cardIds = deckAux.Cards;
+            Serializator.SerializeDeck(deckAux);
+            deck = deckAux;
+        }
+
         GameObject smallCardImage;
         foreach (string cardId in cardIds)
         {

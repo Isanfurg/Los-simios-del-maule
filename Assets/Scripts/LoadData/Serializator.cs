@@ -25,7 +25,8 @@ namespace JsonReaderYugi
         public static void SerializeDeck(Deck deck)
         {
             string jsonString = JsonUtility.ToJson(deck);
-            File.WriteAllText("Assets/Data/Decks/deck.dat", jsonString);
+            File.WriteAllText("Assets/Data/Decks/"+ deck.Name +".dat", jsonString);
+            Debug.Log("Serializado: " + deck.Name);
         }
 
         public static Deck DeserializeDeck(String path)
