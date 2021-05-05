@@ -1,4 +1,5 @@
 using JsonReaderYugi;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,17 +12,22 @@ public class RenderDeck : MonoBehaviour
     static List<Sprite> bigCardsSprites;
     static List<Sprite> smallCardsSprites;
     public static Deck deck;
+    public static int init = 0;
     void Start()
     {
         cardList = LoadData.cardList;
         bigCardsSprites = LoadData.bigCardsSprites;
         smallCardsSprites = LoadData.smallCardsSprites;
-
-        RenderSelectedDeck("deck.dat");
-
+        string name = addMazo.input.text;
+        Debug.Log(name);
+        /*if(init == 0)
+        {
+            RenderSelectedDeck("deck.dat");
+            init = 1;
+        }*/
+        RenderSelectedDeck(name);
         
-        /*Deck deck = new Deck();
-        Serializator.SerializeDeck(deck);*/
+
     }
 
     // Update is called once per frame
@@ -32,17 +38,41 @@ public class RenderDeck : MonoBehaviour
 
     public void RenderSelectedDeck(string fileName)
     {
-        string path = "Assets/Data/Decks/"+fileName;
+        Debug.Log(fileName);
+        string path = "Assets/Data/Decks/"+fileName+".dat";
         deck = Serializator.DeserializeDeck(path);
-        List<string> cardIds = deck.Cards;
+        Debug.Log(fileName);
+        List<string> cardIds;
+        try
+        {
+            cardIds = deck.Cards;
+        }
+        catch(Exception e)
+        {
+            Deck deckAux = new Deck();
+            deckAux.Id = "100";
+            deckAux.Name = fileName;
+            deckAux.Cards = new List<string>();
+            foreach (Card c in LoadData.cardList)
+            {
+                deckAux.Cards.Add(c.id);
+                break;
+            }
+            cardIds = deckAux.Cards;
+            Serializator.SerializeDeck(deckAux);
+            deck = deckAux;
+        }
+
         GameObject smallCardImage;
         foreach (string cardId in cardIds)
         {
             Debug.Log(cardId);
             smallCardImage = (GameObject)Instantiate(preFab, transform);
             smallCardImage.GetComponent<Image>().sprite = FindSmallCard(cardId);
-            
+
         }
+        
+       
     }
 
     public Sprite FindSmallCard(string cardId)

@@ -20,8 +20,9 @@ public class viewLetters : MonoBehaviour
     {
         cardBigImages = new List<Sprite>();
         GameObject smallCardImage;
-        string pathC = "Assets/Data/Decks/" + deckName + ".dat";
         Debug.Log("Nombre de mazo: " + deckName);
+        string pathC = "Assets/Data/Decks/" + deckName + ".dat";
+        
         deck = Serializator.DeserializeDeck(pathC);
         cardList = deck.Cards;
         Debug.Log("Cantidad de cartas: " + cardList.Count);

@@ -1,4 +1,5 @@
 using JsonReaderYugi;
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -20,8 +21,11 @@ public class listMazos : MonoBehaviour
         viewLetters.aux(name);
         
     }
+   
     public void Start()
     {
+    
+
         using (StreamReader leer = new StreamReader("Assets/Data/Dekcsnames.txt"))
         {
             while (!leer.EndOfStream)
@@ -32,6 +36,7 @@ public class listMazos : MonoBehaviour
                 newButton.GetComponentInChildren<Text>().text = name;
                 newButton.SetActive(true);
                 Button btn = newButton.GetComponent<Button>();
+                btn.image.rectTransform.sizeDelta = new Vector2(50, 50);
                 btn.onClick.AddListener(() => { TaskOnClick(btn.name); });
             }
         }
