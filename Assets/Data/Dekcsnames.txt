@@ -1,2 +1,5 @@
 deck
 NuevoMazo
+NewMario
+kiriku
+porque
