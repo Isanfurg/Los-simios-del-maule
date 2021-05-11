@@ -18,7 +18,7 @@ public class RenderDeck : MonoBehaviour
         cardList = LoadData.cardList;
         bigCardsSprites = LoadData.bigCardsSprites;
         smallCardsSprites = LoadData.smallCardsSprites;
-        string name = addMazo.input.text;
+        string name = addMazo.deckName;
         Debug.Log(name);
         /*if(init == 0)
         {
