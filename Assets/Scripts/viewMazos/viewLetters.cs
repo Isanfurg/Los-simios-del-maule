@@ -20,7 +20,11 @@ public class viewLetters : MonoBehaviour
     {
         cardBigImages = new List<Sprite>();
         GameObject smallCardImage;
-        Debug.Log("Nombre de mazo: " + deckName);
+        using (StreamWriter leer = new StreamWriter("Assets/Data/ultimoMazo.txt"))
+        {
+            leer.WriteLine(deckName);
+        }
+           
         string pathC = "Assets/Data/Decks/" + deckName + ".dat";
         
         deck = Serializator.DeserializeDeck(pathC);
