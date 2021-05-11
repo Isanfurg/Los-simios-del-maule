@@ -17,6 +17,7 @@ namespace JsonReaderYugi
         {
             CardList ListOfCards;
             String jsonString = File.ReadAllText(path);
+            Debug.Log(jsonString);
             //ListOfCards = JsonSerializer.Deserialize<List<Card>>(jsonString);
             ListOfCards = JsonUtility.FromJson<CardList>(jsonString);
             return ListOfCards;
