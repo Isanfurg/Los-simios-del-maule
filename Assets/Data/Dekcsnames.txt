@@ -1,5 +1,6 @@
 deck
 NuevoMazo
-DeckYugi
-DeckJoey
-DeckKaiba
+Yugi
+Joey
+Kaiba
+MaZo1
