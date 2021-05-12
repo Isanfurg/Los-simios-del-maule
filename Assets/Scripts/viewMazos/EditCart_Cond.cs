@@ -1,11 +1,8 @@
-using JsonReaderYugi;
-using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.IO;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class viewCard : MonoBehaviour
+public class EditCart_Cond : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()

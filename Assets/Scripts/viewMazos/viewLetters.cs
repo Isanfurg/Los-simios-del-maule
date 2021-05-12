@@ -5,32 +5,33 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class viewCard : MonoBehaviour
+public class viewLetters : MonoBehaviour
 {
     public GameObject preff;
+    public GameObject content;
     public static Deck deck;
     public List<String> cardList;
     public List<Sprite> cardBigImages = new List<Sprite>();
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
     public void aux(string deckName)
     {
         cardBigImages = new List<Sprite>();
+
         GameObject smallCardImage;
-        using (StreamWriter leer = new StreamWriter("Assets/Data/ultimoMazo.txt"))
-        {
-            leer.WriteLine(deckName);
-        }
-
+        Debug.Log("Nombre de mazo: " + deckName);
         string pathC = "Assets/Data/Decks/" + deckName + ".dat";
-
+        
         deck = Serializator.DeserializeDeck(pathC);
         cardList = deck.Cards;
-        Debug.Log("Cantidad de cartas: " + cardList.Count);
-
+        
+        foreach(Transform t in content.transform)
+        {
+            Destroy(t.gameObject);
+        }
         foreach (string cardId in cardList)
         {
             smallCardImage = (GameObject)Instantiate(preff, transform);
@@ -39,7 +40,10 @@ public class viewCard : MonoBehaviour
             cardBigImages.Add(LoadNewSprite("Assets/Resources/Cards/" + cardId + ".jpg"));
 
         }
+        
 
+        
+        
     }
     // Update is called once per frame
     void Update()
