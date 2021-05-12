@@ -378,7 +378,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pref: {fileID: 7540399428549463428, guid: 938c5330a418db94db0c96e4ad300f41, type: 3}
-  viewLetters: {fileID: 0}
+  view: {fileID: 0}
 --- !u!4 &37570811
 Transform:
   m_ObjectHideFlags: 0
@@ -567,10 +567,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: bc85dd2eded17b744a0555c804829bf5, type: 3}
-        m_TargetAssemblyTypeName: UnityEngine.Object, UnityEngine
-        m_MethodName: set_name
-        m_Mode: 5
+      - m_Target: {fileID: 150535912}
+        m_TargetAssemblyTypeName: BorrarMazo, Assembly-CSharp
+        m_MethodName: borrar
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1472,7 +1472,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 817333380}
-  - component: {fileID: 817333381}
+  - component: {fileID: 817333379}
   m_Layer: 0
   m_Name: GameObjectB
   m_TagString: TagB
@@ -1480,6 +1480,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &817333379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 817333378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 231f20a1a6eb3a446a956b47b37faab9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  preff: {fileID: 5156540118687701831, guid: 6cce75e098437e94291b43e7b128581a, type: 3}
+  cardList: []
+  cardBigImages: []
 --- !u!4 &817333380
 Transform:
   m_ObjectHideFlags: 0
@@ -1494,21 +1509,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &817333381
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 817333378}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd0689434fc0aa64c90ebf11b295b3c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  preff: {fileID: 0}
-  cardList: []
-  cardBigImages: []
 --- !u!1 &823536732
 GameObject:
   m_ObjectHideFlags: 0
@@ -1850,7 +1850,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1185851966}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd0689434fc0aa64c90ebf11b295b3c8, type: 3}
+  m_Script: {fileID: 11500000, guid: 231f20a1a6eb3a446a956b47b37faab9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   preff: {fileID: 5156540118687701831, guid: 6cce75e098437e94291b43e7b128581a, type: 3}
@@ -2100,7 +2100,7 @@ GameObject:
   - component: {fileID: 1482239631}
   m_Layer: 5
   m_Name: Scroll View_listCards
-  m_TagString: Untagged
+  m_TagString: cartasMazo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2838,7 +2838,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pref: {fileID: 7540399428549463428, guid: 938c5330a418db94db0c96e4ad300f41, type: 3}
-  viewLetters: {fileID: 0}
+  view: {fileID: 0}
 --- !u!114 &1981956021
 MonoBehaviour:
   m_ObjectHideFlags: 0

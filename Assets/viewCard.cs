@@ -5,7 +5,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class viewLetters : MonoBehaviour
+public class viewCard : MonoBehaviour
 {
     public GameObject preff;
     public static Deck deck;
@@ -14,7 +14,7 @@ public class viewLetters : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
     public void aux(string deckName)
     {
@@ -24,9 +24,9 @@ public class viewLetters : MonoBehaviour
         {
             leer.WriteLine(deckName);
         }
-           
+
         string pathC = "Assets/Data/Decks/" + deckName + ".dat";
-        
+
         deck = Serializator.DeserializeDeck(pathC);
         cardList = deck.Cards;
         Debug.Log("Cantidad de cartas: " + cardList.Count);

@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class BorrarMazo : MonoBehaviour
 {
-    private void borrar()
+    public void borrar()
     {
         string nameBtn;
         List<string> names = new List<string>();
@@ -34,16 +34,9 @@ public class BorrarMazo : MonoBehaviour
             }
 
         }
+        
+        File.Delete("Assets/Data/Decks/"+ nameBtn+".dat");
+        //File.Delete("Assets/Data/Decks/" + nameBtn + ".meta.dat");
     }
-    // Start is called before the first frame update
-    void Start()
-    {
-       
-
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        borrar();
-    }
+   
 }

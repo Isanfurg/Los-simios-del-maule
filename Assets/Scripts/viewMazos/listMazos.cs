@@ -13,12 +13,12 @@ public class listMazos : MonoBehaviour
 
     // Start is called before the first frame update
     public GameObject pref;
-    public viewLetters viewLetters;
+    public viewCard2 view;
     public void TaskOnClick(string name)
     {
-        viewLetters = GameObject.FindGameObjectWithTag("contt").GetComponent<viewLetters>();
+        view = GameObject.FindGameObjectWithTag("contt").GetComponent<viewCard2>();
         //Thread.Sleep(4000);
-        viewLetters.aux(name);
+        view.aux(name);
         
     }
    
