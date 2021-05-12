@@ -10,6 +10,7 @@ using UnityEngine.UI;
 public class addMazo : MonoBehaviour
 {
     public static InputField input;
+    public static string nameDeck;
     public static void SerializeName(string name)
     {
         try
@@ -36,8 +37,8 @@ public class addMazo : MonoBehaviour
         input = GameObject.FindGameObjectWithTag("nameMazo").GetComponent<InputField>();
         TextWriter arch;
         arch = new StreamWriter("Assets/Data/Decks/"+input.text+".dat");
-        string nam = input.text;
-        SerializeName(nam);
+        nameDeck = input.text;
+        SerializeName(nameDeck);
 
     }
     private Boolean validateName(string name)

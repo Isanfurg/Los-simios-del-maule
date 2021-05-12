@@ -2,24 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using System.IO;
 
 public class ButtonEdit : MonoBehaviour
 {
-    public void TaskOnClickEdit()
-    {
-        //createDeck = false;
-        //addMazo.deckName = listMazos.btnName;
-    }
+    public static string namebtn;
     // Start is called before the first frame update
-    void Start()
+    public void editarMazo()
     {
-        //Button editBtn = GameObject.FindGameObjectWithTag("edit_button").GetComponent<Button>();
-        //editBtn.onClick.AddListener(() => { TaskOnClickEdit(); });
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        using (StreamReader leer = new StreamReader("Assets/Data/ultimoMazo.txt"))
+        {
+            addMazo.nameDeck = leer.ReadLine();
+        }
     }
 }
