@@ -13,7 +13,8 @@ TagManager:
   - TagC
   - nameMazo
   - add
-  - edit_button
+  - btnBorrar
+  - cartasMazo
   layers:
   - Default
   - TransparentFX

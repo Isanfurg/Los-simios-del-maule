@@ -10,7 +10,6 @@ using UnityEngine.UI;
 public class addMazo : MonoBehaviour
 {
     public static InputField input;
-    public static string deckName;
     public static void SerializeName(string name)
     {
         try
@@ -18,7 +17,7 @@ public class addMazo : MonoBehaviour
             //Open the File
             StreamWriter sw = new StreamWriter("Assets/Data/Dekcsnames.txt", true, Encoding.ASCII);
             //Writeout the numbers 1 to 10 on the same line.
-            sw.Write("\n"+name);
+            sw.WriteLine(name);
             //close the file
             sw.Close();
         }
@@ -35,19 +34,37 @@ public class addMazo : MonoBehaviour
     public void TaskOnClick()
     {
         input = GameObject.FindGameObjectWithTag("nameMazo").GetComponent<InputField>();
-        new StreamWriter("Assets/Data/Decks/"+input.text+".dat").Close();
-        deckName = input.text;
-        SerializeName(deckName);
+        TextWriter arch;
+        arch = new StreamWriter("Assets/Data/Decks/"+input.text+".dat");
+        string nam = input.text;
+        SerializeName(nam);
 
     }
-
-    
+    private Boolean validateName(string name)
+    {
+        using (StreamReader leer = new StreamReader("Assets/Data/Dekcsnames.txt"))
+        {
+            while (!leer.EndOfStream)
+            {
+                string nameNew = leer.ReadLine();
+                Debug.Log(nameNew);
+                if (nameNew.Equals(name))
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
     // Start is called before the first frame update
     void Start()
     {
         Button btn = GameObject.FindGameObjectWithTag("add").GetComponent<Button>();
-        btn.onClick.AddListener(() => { TaskOnClick(); });
-
+        string name = GameObject.FindGameObjectWithTag("nameMazo").GetComponent<InputField>().text;
+        if (validateName(name+"\n"))
+        {
+            btn.onClick.AddListener(() => { TaskOnClick(); });
+        }
         
     }
 

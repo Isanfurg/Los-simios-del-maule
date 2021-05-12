@@ -247,13 +247,8 @@ public class CardMaker : MonoBehaviour
         Serializator.SerializeCards(cl);
         File.WriteAllBytes("Assets/Resources/Cards/" + card.Id + ".jpg", bytes);
         File.WriteAllBytes("Assets/Resources/SmallCards/" + card.Id + ".jpg", bytes);
-        Sprite bigCard = LoadNewSprite("Assets/Resources/Cards/" + card.Id + ".jpg");
-        Sprite smallCard = LoadNewSprite("Assets/Resources/Cards/" + card.Id + ".jpg");
-        bigCard.name = card.Id;
-        smallCard.name = card.Id;
-        bigCardsSprites.Add(bigCard);
-        smallCardsSprites.Add(smallCard);
-        
+        bigCardsSprites.Add(LoadNewSprite("Assets/Resources/Cards/" + card.Id + ".jpg"));
+        smallCardsSprites.Add(LoadNewSprite("Assets/Resources/SmallCards/" + card.Id + ".jpg"));
 
     }
 
