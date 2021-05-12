@@ -10,6 +10,7 @@ using UnityEngine.UI;
 public class addMazo : MonoBehaviour
 {
     public static InputField input;
+    public static string deckName;
     public static void SerializeName(string name)
     {
         try
@@ -34,17 +35,25 @@ public class addMazo : MonoBehaviour
     public void TaskOnClick()
     {
         input = GameObject.FindGameObjectWithTag("nameMazo").GetComponent<InputField>();
-        TextWriter arch;
-        arch = new StreamWriter("Assets/Data/Decks/"+input.text+".dat");
-        string nam = input.text;
-        SerializeName(nam);
+        new StreamWriter("Assets/Data/Decks/"+input.text+".dat");
+        deckName = input.text;
+        SerializeName(deckName);
 
+    }
+
+    public void TaskOnClickEdit()
+    {
+        //createDeck = false;
+        deckName = listMazos.btnName;
     }
     // Start is called before the first frame update
     void Start()
     {
         Button btn = GameObject.FindGameObjectWithTag("add").GetComponent<Button>();
         btn.onClick.AddListener(() => { TaskOnClick(); });
+
+        Button editBtn = GameObject.FindGameObjectWithTag("edit_button").GetComponent<Button>();
+        editBtn.onClick.AddListener(() => { TaskOnClickEdit(); });
     }
 
     // Update is called once per frame
