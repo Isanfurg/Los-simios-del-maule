@@ -3,3 +3,6 @@ NuevoMazo
 NewMario
 kiriku
 porque
+Yugi
+Kaiba
+Joey
