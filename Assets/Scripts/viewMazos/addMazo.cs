@@ -40,11 +40,31 @@ public class addMazo : MonoBehaviour
         SerializeName(nam);
 
     }
+    private Boolean validateName(string name)
+    {
+        using (StreamReader leer = new StreamReader("Assets/Data/Dekcsnames.txt"))
+        {
+            while (!leer.EndOfStream)
+            {
+                string nameNew = leer.ReadLine();
+                if (nameNew.Equals(name))
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
     // Start is called before the first frame update
     void Start()
     {
         Button btn = GameObject.FindGameObjectWithTag("add").GetComponent<Button>();
-        btn.onClick.AddListener(() => { TaskOnClick(); });
+        string name = GameObject.FindGameObjectWithTag("nameMazo").GetComponent<InputField>().text;
+        if (validateName(name))
+        {
+            btn.onClick.AddListener(() => { TaskOnClick(); });
+        }
+        
     }
 
     // Update is called once per frame
