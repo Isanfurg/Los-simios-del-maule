@@ -7,7 +7,6 @@ using UnityEngine.UI;
 public class viewCard2 : MonoBehaviour
 {
     public GameObject preff;
-    public GameObject content;
     public static Deck deck;
     public List<String> cardList;
     public List<Sprite> cardBigImages = new List<Sprite>();
@@ -19,7 +18,6 @@ public class viewCard2 : MonoBehaviour
     public void aux(string deckName)
     {
         cardBigImages = new List<Sprite>();
-
         GameObject smallCardImage;
         using (StreamWriter leer = new StreamWriter("Assets/Data/ultimoMazo.txt"))
         {
@@ -30,11 +28,8 @@ public class viewCard2 : MonoBehaviour
 
         deck = Serializator.DeserializeDeck(pathC);
         cardList = deck.Cards;
-        
-        foreach(Transform t in content.transform)
-        {
-            Destroy(t.gameObject);
-        }
+        Debug.Log("Cantidad de cartas: " + cardList.Count);
+
         foreach (string cardId in cardList)
         {
             smallCardImage = (GameObject)Instantiate(preff, transform);
@@ -43,10 +38,7 @@ public class viewCard2 : MonoBehaviour
             cardBigImages.Add(LoadNewSprite("Assets/Resources/Cards/" + cardId + ".jpg"));
 
         }
-        
 
-        
-        
     }
     // Update is called once per frame
     void Update()
