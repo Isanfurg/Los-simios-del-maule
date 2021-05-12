@@ -47,6 +47,7 @@ public class addMazo : MonoBehaviour
             while (!leer.EndOfStream)
             {
                 string nameNew = leer.ReadLine();
+                Debug.Log(nameNew);
                 if (nameNew.Equals(name))
                 {
                     return false;
@@ -60,7 +61,7 @@ public class addMazo : MonoBehaviour
     {
         Button btn = GameObject.FindGameObjectWithTag("add").GetComponent<Button>();
         string name = GameObject.FindGameObjectWithTag("nameMazo").GetComponent<InputField>().text;
-        if (validateName(name))
+        if (validateName(name+"\n"))
         {
             btn.onClick.AddListener(() => { TaskOnClick(); });
         }
