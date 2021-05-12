@@ -18,7 +18,7 @@ public class addMazo : MonoBehaviour
             //Open the File
             StreamWriter sw = new StreamWriter("Assets/Data/Dekcsnames.txt", true, Encoding.ASCII);
             //Writeout the numbers 1 to 10 on the same line.
-            sw.Write("\n"+name);
+            sw.WriteLine(name);
             //close the file
             sw.Close();
         }

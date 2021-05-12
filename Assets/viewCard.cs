@@ -5,7 +5,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class viewLetters : MonoBehaviour
+public class viewCard : MonoBehaviour
 {
     public GameObject preff;
     public static Deck deck;
@@ -14,15 +14,19 @@ public class viewLetters : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
     public void aux(string deckName)
     {
         cardBigImages = new List<Sprite>();
         GameObject smallCardImage;
-        Debug.Log("Nombre de mazo: " + deckName);
+        using (StreamWriter leer = new StreamWriter("Assets/Data/ultimoMazo.txt"))
+        {
+            leer.WriteLine(deckName);
+        }
+
         string pathC = "Assets/Data/Decks/" + deckName + ".dat";
-        
+
         deck = Serializator.DeserializeDeck(pathC);
         cardList = deck.Cards;
         Debug.Log("Cantidad de cartas: " + cardList.Count);
