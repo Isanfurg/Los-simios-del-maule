@@ -197,14 +197,14 @@ public class CardMaker : MonoBehaviour
         try
         {
             
-            int width = 475;
-            int height = 670;
+            int width = 380;
+            int height = 535;
             Texture2D tex = new Texture2D(width, height, TextureFormat.RGB24, false);
             Rect sel = new Rect();
             sel.width = width;
             sel.height = height;
-            sel.x = CardTemplate.transform.position.x - 235;
-            sel.y = CardTemplate.transform.position.y - 335;
+            sel.x = CardTemplate.transform.position.x - 190;
+            sel.y = CardTemplate.transform.position.y - 265;
 
             tex.ReadPixels(sel, 0, 0);
 
@@ -247,13 +247,12 @@ public class CardMaker : MonoBehaviour
         Serializator.SerializeCards(cl);
         File.WriteAllBytes("Assets/Resources/Cards/" + card.Id + ".jpg", bytes);
         File.WriteAllBytes("Assets/Resources/SmallCards/" + card.Id + ".jpg", bytes);
-        Sprite bigCard = LoadNewSprite("Assets/Resources/Cards/" + card.Id + ".jpg");
-        Sprite smallCard = LoadNewSprite("Assets/Resources/Cards/" + card.Id + ".jpg");
-        bigCard.name = card.Id;
-        smallCard.name = card.Id;
-        bigCardsSprites.Add(bigCard);
-        smallCardsSprites.Add(smallCard);
-        
+        Sprite bigSprite = LoadNewSprite("Assets/Resources/Cards/" + card.Id + ".jpg");
+        Sprite smallSprite = LoadNewSprite("Assets/Resources/SmallCards/" + card.Id + ".jpg");
+        bigSprite.name = card.Id;
+        smallSprite.name = card.Id;
+        bigCardsSprites.Add(bigSprite);
+        smallCardsSprites.Add(smallSprite);
 
     }
 

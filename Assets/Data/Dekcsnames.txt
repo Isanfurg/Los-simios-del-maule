@@ -1,6 +1,5 @@
-deck
-NuevoMazo
-NewMario
-kiriku
-porque
-mazito
+Yugi
+Kaiba
+Joey
+NewMazo
+OtroTanto
