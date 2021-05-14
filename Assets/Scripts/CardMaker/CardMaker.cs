@@ -11,7 +11,6 @@ using SFB;
 
 public class CardMaker : MonoBehaviour
 {
-
     public GameObject CardTemplate;
     public GameObject CardLevel;
     public InputField CardNameInput;
@@ -32,12 +31,20 @@ public class CardMaker : MonoBehaviour
     static List<Sprite> smallCardsSprites;
     void Start()
     {
+        cardLevel = 1;
         CharCount.text = "";
         cardList = LoadData.cardList;
         bigCardsSprites = LoadData.bigCardsSprites;
         smallCardsSprites = LoadData.smallCardsSprites;
 
-        
+        CardNameInput.characterLimit = 23;
+        CardDescriptionInput.characterLimit = 107;
+        CardAtkInput.characterLimit = 6;
+        CardDefInput.characterLimit = 6;
+        CardTypeInput.characterLimit = 20;
+        CardTemplate.transform.Find("CardArt").gameObject.GetComponent<UnityEngine.UI.Image>().sprite = null;
+
+
     }
 
     // Update is called once per frame
@@ -46,7 +53,8 @@ public class CardMaker : MonoBehaviour
         
     }
 
-    public void ReadCardName(string s) {
+    public void ReadCardName() {
+        string s = CardNameInput.text;
         CharCount.text = s.Length + "/23";
         if (s.Length <= 23)
         {
@@ -59,7 +67,8 @@ public class CardMaker : MonoBehaviour
         
     }
 
-    public void ReadCardDescription(string s) {
+    public void ReadCardDescription() {
+        string s = CardDescriptionInput.text;
         CharCount.text = s.Length + "/107";
         if (s.Length <= 107)
         {
@@ -70,7 +79,8 @@ public class CardMaker : MonoBehaviour
         }
     }
 
-    public void ReadCardAtk(string s) {
+    public void ReadCardAtk() {
+        string s = CardAtkInput.text;
         CharCount.text = s.Length + "/6";
         if (s.Length <= 6)
         {
@@ -90,7 +100,8 @@ public class CardMaker : MonoBehaviour
         
     }
 
-    public void ReadCardDef(string s) {
+    public void ReadCardDef() {
+        string s = CardDefInput.text;
         CharCount.text = s.Length + "/6";
         if (s.Length <= 6)
         {
@@ -111,6 +122,7 @@ public class CardMaker : MonoBehaviour
 
     public void ReadCardLevel()
     {
+       
         foreach (Transform child in CardLevel.transform)
         {
             Destroy(child.gameObject);
@@ -127,8 +139,9 @@ public class CardMaker : MonoBehaviour
         }
     }
 
-    public void ReadCardType(string s)
+    public void ReadCardType()
     {
+        string s = CardTypeInput.text;
         CharCount.text = s.Length + "/20";
         if (s.Length <= 20)
         {         
@@ -144,6 +157,7 @@ public class CardMaker : MonoBehaviour
         var extensions = new[] {
             new ExtensionFilter("Image Files", "png", "jpg", "jpeg" )
         };
+
         var paths = StandaloneFileBrowser.OpenFilePanel("Open File", "", extensions, true);
         Image CardArt = CardTemplate.transform.Find("CardArt").gameObject.GetComponent<UnityEngine.UI.Image>();
         CardArt.sprite = LoadNewSprite(paths[0]);
@@ -151,10 +165,13 @@ public class CardMaker : MonoBehaviour
 
     public void SaveCardButton()
     {
-        if (CardNameInput.text != "" && CardDescriptionInput.text != "" && CardAtkInput.text != "" && CardDefInput.text != "")
+        bool areInputsEmpty = !(CardNameInput.text != "" && CardDescriptionInput.text != "" && CardAtkInput.text != "" && CardDefInput.text != "" && CardTypeInput.text != "");
+        bool areImageEmpty = CardTemplate.transform.Find("CardArt").gameObject.GetComponent<UnityEngine.UI.Image>().sprite == null;
+        bool isStorable = !areInputsEmpty && !areImageEmpty;
+        if (isStorable)
             StartCoroutine(ExportCard());
         else
-            CharCount.text = "Ningun campo de texto debe estar vacio";
+            CharCount.text = "Campos vacíos o falta imagen";
     }
 
 
@@ -196,7 +213,8 @@ public class CardMaker : MonoBehaviour
 
         try
         {
-            
+
+
             int width = 380;
             int height = 535;
             Texture2D tex = new Texture2D(width, height, TextureFormat.RGB24, false);
@@ -211,7 +229,6 @@ public class CardMaker : MonoBehaviour
             byte[] bytes = tex.EncodeToJPG();
 
             SaveCardCreated(bytes);
-            CharCount.text = "Carta guardada";
             CardNameInput.text = "";
             CardDescriptionInput.text = "";
             CardAtkInput.text = "";
@@ -219,6 +236,9 @@ public class CardMaker : MonoBehaviour
             CardDescriptionInput.text = "";
             CardTypeInput.text = "";
             CardTemplate.transform.Find("CardArt").gameObject.GetComponent<UnityEngine.UI.Image>().sprite = null;
+            CharCount.text = "Carta guardada";
+       
+            
 
         }
         catch (Exception e)
