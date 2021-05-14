@@ -13,9 +13,10 @@ public class Hover : MonoBehaviour, IPointerEnterHandler
     static List<Sprite> smallCardsSprites;
     void Start()
     {
-        cardList = LoadData.cardList;
-        bigCardsSprites = LoadData.bigCardsSprites;
-        smallCardsSprites = LoadData.smallCardsSprites;
+        LoadData instance = LoadData.GetInstance();
+        cardList = instance.GetCardList();
+        bigCardsSprites = instance.GetBigSprites();
+        smallCardsSprites = instance.GetSmallSprites();
     }
 
     // Update is called once per frame

@@ -33,9 +33,11 @@ public class CardMaker : MonoBehaviour
     {
         cardLevel = 1;
         CharCount.text = "";
-        cardList = LoadData.cardList;
-        bigCardsSprites = LoadData.bigCardsSprites;
-        smallCardsSprites = LoadData.smallCardsSprites;
+
+        LoadData instance = LoadData.GetInstance();
+        cardList = instance.GetCardList();
+        bigCardsSprites = instance.GetBigSprites();
+        smallCardsSprites = instance.GetSmallSprites();
 
         CardNameInput.characterLimit = 23;
         CardDescriptionInput.characterLimit = 107;
