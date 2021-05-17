@@ -8,29 +8,43 @@ using UnityEngine.UI;
 
 public class LoadData : MonoBehaviour
 {
-    // Start is called before the first frame update
-    static CardList cards = null;
+    private static CardList cards = null;
     //info img
-    public static List<JsonReaderYugi.Card> cardList;
+    private static List<JsonReaderYugi.Card> cardList;
     //img high 
-    public static List<Sprite> bigCardsSprites = new List<Sprite>();
+    private static List<Sprite> bigCardsSprites = new List<Sprite>();
     //img low
-    public static List<Sprite> smallCardsSprites = new List<Sprite>();
+    private static List<Sprite> smallCardsSprites = new List<Sprite>();
+
+    //Unique class instance
+    private static LoadData instance = null;
+    
 
     void Start()
-    {
-        loadData();
+    {   
+        //inits class instance
+        GetInstance();
     }
-
-
-    // Update is called once per frame
-    void Update()
+    
+    private LoadData()
     {
         
     }
 
-    private void loadData()
+    public static LoadData GetInstance()
     {
+        if(instance == null)
+        {
+            instance = new LoadData();
+            instance.loadData();
+        }
+        return instance;
+    }
+
+    //
+    private void loadData()
+    {   
+        //Carga los datos por primera y única vez
         if (cards == null)
         {
             Debug.Log("Loading cards...");
@@ -55,7 +69,8 @@ public class LoadData : MonoBehaviour
         Debug.Log("smallcards size: " + smallCardsSprites.Count);
     }
 
-    public Sprite LoadNewSprite(string FilePath, float PixelsPerUnit = 100.0f)
+    //Carga una imagen cualquiera como sprite
+    private Sprite LoadNewSprite(string FilePath, float PixelsPerUnit = 100.0f)
     {
 
         // Load a PNG or JPG image from disk to a Texture2D, assign this texture to a new sprite and return its reference
@@ -67,7 +82,7 @@ public class LoadData : MonoBehaviour
         return NewSprite;
     }
 
-    public Texture2D LoadTexture(string FilePath)
+    private Texture2D LoadTexture(string FilePath)
     {
 
         // Load a PNG or JPG file from disk to a Texture2D
@@ -85,4 +100,10 @@ public class LoadData : MonoBehaviour
         }
         return null;                     // Return null if load failed
     }
+
+    public List<Card> GetCardList() { return cardList; }
+    public List<Sprite> GetBigSprites() { return bigCardsSprites; }
+    public List<Sprite> GetSmallSprites() { return smallCardsSprites; }
+
+
 }

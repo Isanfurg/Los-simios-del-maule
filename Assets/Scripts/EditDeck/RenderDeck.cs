@@ -15,9 +15,10 @@ public class RenderDeck : MonoBehaviour
     public static int init = 0;
     void Start()
     {
-        cardList = LoadData.cardList;
-        bigCardsSprites = LoadData.bigCardsSprites;
-        smallCardsSprites = LoadData.smallCardsSprites;
+        LoadData instance = LoadData.GetInstance();
+        cardList = instance.GetCardList();
+        bigCardsSprites = instance.GetBigSprites();
+        smallCardsSprites = instance.GetSmallSprites();
         string name = addMazo.nameDeck;
         Debug.Log(name);
         /*if(init == 0)
@@ -53,7 +54,7 @@ public class RenderDeck : MonoBehaviour
             deckAux.Id = "100";
             deckAux.Name = fileName;
             deckAux.Cards = new List<string>();
-            foreach (Card c in LoadData.cardList)
+            foreach (Card c in cardList)
             {
                 deckAux.Cards.Add(c.id);
                 break;

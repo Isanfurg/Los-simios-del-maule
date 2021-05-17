@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SelectDeckScene.unity
     guid: 31664a04ec0e73a40b4fc588e4081d48
+  - enabled: 1
+    path: Assets/Scenes/BoardScene.unity
+    guid: 6b6fa541e654fd346a300858d9248c7c
   m_configObjects: {}
