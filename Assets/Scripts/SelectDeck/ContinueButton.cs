@@ -9,11 +9,11 @@ public class ContinueButton : MonoBehaviour
     public Text Alert;
 
     //Valida que se haya seleccionado un mazo antes de continuar al juego
-   public void Continue()
+   public void Continue(string scene)
     {
         if(DeckClick.selectedDeck != null)
         {
-            SceneManager.LoadScene("TabletopScene");
+            SceneManager.LoadScene(scene);
         }
         else
         {

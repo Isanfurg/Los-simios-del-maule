@@ -2,6 +2,7 @@ using JsonReaderYugi;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class DealCards : MonoBehaviour
@@ -10,7 +11,6 @@ public class DealCards : MonoBehaviour
     static Deck playerDeck;
     public GameObject PlayerHand;
     public GameObject PlayerDeck;
-    public Image CardBacking;
 
     static List<Card> cardList;
     static List<Sprite> bigCardsSprites;
@@ -40,6 +40,10 @@ public class DealCards : MonoBehaviour
             cardIDs.RemoveAt(cardIDs.Count - 1);
             Sprite cardSprite = FindSmallCard(cardID);
             GameObject cardImage = new GameObject();
+            cardImage.AddComponent<DragDropCard>();
+            CanvasGroup c = cardImage.AddComponent<CanvasGroup>();
+            c.interactable = true;
+            c.blocksRaycasts = true;
             cardImage.AddComponent<Image>().sprite = cardSprite;
             cardImage.transform.SetParent(PlayerHand.transform);
         }
@@ -56,4 +60,6 @@ public class DealCards : MonoBehaviour
 
         return null;
     }
+
+
 }
