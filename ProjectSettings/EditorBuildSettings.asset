@@ -21,9 +21,6 @@ EditorBuildSettings:
     path: Assets/Scenes/viewMazosScene.unity
     guid: 7235e67cb4a46cf4c86fe40bb8206800
   - enabled: 1
-    path: Assets/Scenes/CardMakerScene.unity
-    guid: ab99677349252874cb6e9f000afc0242
-  - enabled: 1
     path: Assets/Scenes/EditDecksScene.unity
     guid: 4636df3fe0961104ea01b8cbdb363d57
   - enabled: 1
@@ -32,4 +29,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BoardScene.unity
     guid: 6b6fa541e654fd346a300858d9248c7c
+  - enabled: 1
+    path: Assets/Scenes/CardMakerScene.unity
+    guid: ab99677349252874cb6e9f000afc0242
+  - enabled: 1
+    path: Assets/Scenes/BoardScene.unity
+    guid: d00b29077a6e7094ca7dd76427a93890
   m_configObjects: {}
