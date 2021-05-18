@@ -30,6 +30,8 @@ public class SceneScript : MonoBehaviour
         {
             Serializator.SerializeDeck(deck);
             Alert.text = "Mazo guardado";
+            UIScenes changer = new UIScenes();
+            changer.LoadScene("MenuScene");
         }
         else
         {
