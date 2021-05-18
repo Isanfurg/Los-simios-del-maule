@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DropZone : MonoBehaviour, IDropHandler{
+public class DropZone : MonoBehaviour, IDropHandler {
     private GameObject cardIn;
     public string zoneType;
 
@@ -13,6 +13,11 @@ public class DropZone : MonoBehaviour, IDropHandler{
     void Start()
     {
         cardIn = null;
+    }
+
+    public void atacar()
+    {
+
     }
     public void OnDrop(PointerEventData eventData){
         Debug.Log("Card dropped");
@@ -30,13 +35,9 @@ public class DropZone : MonoBehaviour, IDropHandler{
             {
                 card.returnPoint = this.transform;
                 cardIn = cardDropped;
-            }
-                
-            
+            } 
             //Destroy(card.gameObject.GetComponent<DragDropCard>());
         }
-
-
     }
 
     private Card SearchCard(string id)
