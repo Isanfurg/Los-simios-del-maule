@@ -15,6 +15,7 @@ public class DealCards : MonoBehaviour
     static List<Card> cardList;
     static List<Sprite> bigCardsSprites;
     static List<Sprite> smallCardsSprites;
+    public Image CardView;
 
     //Obtiene los datos de las cartas junto con el mazo seleccionado por el jugador
     void Start()
@@ -41,6 +42,7 @@ public class DealCards : MonoBehaviour
             Sprite cardSprite = FindSmallCard(cardID);
             GameObject cardImage = new GameObject();
             cardImage.AddComponent<DragDropCard>();
+            cardImage.AddComponent<CardHover>().CardView = CardView;
             CanvasGroup c = cardImage.AddComponent<CanvasGroup>();
             c.interactable = true;
             c.blocksRaycasts = true;
