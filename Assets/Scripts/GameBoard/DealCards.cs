@@ -11,7 +11,7 @@ public class DealCards : MonoBehaviour
     static Deck playerDeck;
     public GameObject PlayerHand;
     public GameObject PlayerDeck;
-
+    public List<string> cardIDs;
     static List<Card> cardList;
     static List<Sprite> bigCardsSprites;
     static List<Sprite> smallCardsSprites;
@@ -27,6 +27,11 @@ public class DealCards : MonoBehaviour
         smallCardsSprites = instance.GetSmallSprites();
         playerDeck = DeckClick.selectedDeck;
         DealCardsPlayer();
+       // Button btn1 = GameObject.FindGameObjectWithTag("DrawP1").GetComponent<Button>();
+       // btn1.onClick.AddListener(() => { DrawCard(); });
+       // Button btn2 = GameObject.FindGameObjectWithTag("DrawP2").GetComponent<Button>();
+       // btn2.onClick.AddListener(() => { DrawCard(); });
+
     }
 
 
@@ -34,21 +39,29 @@ public class DealCards : MonoBehaviour
     private void DealCardsPlayer()
     {   
         //Quita las cartas de arriba del mazo
-        List<string> cardIDs = playerDeck.Cards;
+        cardIDs = playerDeck.Cards;
         for(int i = 0; i < CARDS_DEAL_COUNT; i++)
         {
-            string cardID = cardIDs[cardIDs.Count - 1];
-            cardIDs.RemoveAt(cardIDs.Count - 1);
-            Sprite cardSprite = FindSmallCard(cardID);
-            GameObject cardImage = new GameObject();
-            cardImage.AddComponent<DragDropCard>();
-            cardImage.AddComponent<CardHover>().CardView = CardView;
-            CanvasGroup c = cardImage.AddComponent<CanvasGroup>();
-            c.interactable = true;
-            c.blocksRaycasts = true;
-            cardImage.AddComponent<Image>().sprite = cardSprite;
-            cardImage.transform.SetParent(PlayerHand.transform);
+            DrawCard();
         }
+        playerDeck.Cards = cardIDs;
+    }
+
+    private void DrawCard()
+    {
+        cardIDs = playerDeck.Cards;
+        string cardID = cardIDs[cardIDs.Count - 1];
+        cardIDs.RemoveAt(cardIDs.Count - 1);
+        Sprite cardSprite = FindSmallCard(cardID);
+        GameObject cardImage = new GameObject();
+        cardImage.AddComponent<DragDropCard>();
+        cardImage.AddComponent<CardHover>().CardView = CardView;
+        CanvasGroup c = cardImage.AddComponent<CanvasGroup>();
+        c.interactable = true;
+        c.blocksRaycasts = true;
+        cardImage.AddComponent<Image>().sprite = cardSprite;
+        cardImage.transform.SetParent(PlayerHand.transform);
+        playerDeck.Cards = cardIDs;
     }
 
     //Obtiene el sprite de una carta con su ID

@@ -5,7 +5,8 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DropZone : MonoBehaviour, IDropHandler {
+//Clase que detecta cuando una carta se suelta en la zona de monstruos
+public class DropZone : MonoBehaviour, IDropHandler{
     private GameObject cardIn;
     public string zoneType;
 
@@ -14,6 +15,8 @@ public class DropZone : MonoBehaviour, IDropHandler {
     {
         cardIn = null;
     }
+
+    //Cuando se suelta la carta, la zona de monstruos intersectada pasa a albergar esa carta
     public void attack()
     {
         
@@ -52,6 +55,7 @@ public class DropZone : MonoBehaviour, IDropHandler {
         }
     }
 
+    //Busca los datos de una carta dada su id
     private Card SearchCard(string id)
     {
         LoadData data = LoadData.GetInstance();
