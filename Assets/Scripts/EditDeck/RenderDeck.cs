@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+//Clase que se encarga de mostrar las cartas del mazo que se está editando en la escena "EditDeckScene"
 public class RenderDeck : MonoBehaviour
 {
     public GameObject preFab;
@@ -15,34 +16,24 @@ public class RenderDeck : MonoBehaviour
     public static int init = 0;
     void Start()
     {
+        //Referencias a los datos cargados en memoria anteriormente
         LoadData instance = LoadData.GetInstance();
         cardList = instance.GetCardList();
         bigCardsSprites = instance.GetBigSprites();
         smallCardsSprites = instance.GetSmallSprites();
         string name = addMazo.nameDeck;
-        Debug.Log(name);
-        /*if(init == 0)
-        {
-            RenderSelectedDeck("deck.dat");
-            init = 1;
-        }*/
+
         RenderSelectedDeck(name);
         
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    //Muestra las cartas del mazo seleccionado
     public void RenderSelectedDeck(string fileName)
     {
-        Debug.Log(fileName);
+        //Desserializa el mazo
         string path = "Assets/Data/Decks/"+fileName+".dat";
         deck = Serializator.DeserializeDeck(path);
-        Debug.Log(fileName);
         List<string> cardIds;
         try
         {
@@ -64,10 +55,10 @@ public class RenderDeck : MonoBehaviour
             deck = deckAux;
         }
 
+        //Muestra las cartas del mazo
         GameObject smallCardImage;
         foreach (string cardId in cardIds)
         {
-            Debug.Log(cardId);
             smallCardImage = (GameObject)Instantiate(preFab, transform);
             smallCardImage.GetComponent<Image>().sprite = FindSmallCard(cardId);
 
@@ -76,6 +67,7 @@ public class RenderDeck : MonoBehaviour
        
     }
 
+    //Busca el sprite pequeño (en baja resolución) de una carta dada su ID
     public Sprite FindSmallCard(string cardId)
     {
         for(int i = 0; i < smallCardsSprites.Count; i++)

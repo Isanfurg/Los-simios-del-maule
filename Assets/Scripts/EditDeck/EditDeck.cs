@@ -6,6 +6,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class EditDeck : MonoBehaviour
 {
     public GameObject preFab;
@@ -13,18 +14,7 @@ public class EditDeck : MonoBehaviour
     public List<JsonReaderYugi.Card> cardList;
     public List<Sprite> cardBigImages = new List<Sprite>();
     void Start()
-    {
-        /*String path = "CardsID.txt";
-        CardsLoader cLoader = new CardsLoader();
-        cLoader.StartDownload(path);
-        String pathC = "cards.dat";
-        cards = Serializator.DeserializeCards(pathC);
-        List<JsonReaderYugi.Card> ListOfCards = cards.cardList;
-        foreach (JsonReaderYugi.Card card in ListOfCards)
-        {
-            card.ToString();
-        }*/
-        
+    {   
         GameObject smallCardImage;
         String pathC = "cards.dat";
         cards = Serializator.DeserializeCards(pathC);
@@ -42,14 +32,8 @@ public class EditDeck : MonoBehaviour
 
 
     }
-  
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+ 
+    
    public void startAux(GameObject preFab2, Transform transform2)
     {
         
@@ -66,6 +50,9 @@ public class EditDeck : MonoBehaviour
             
         }
     }
+
+    //Funciones para cargar un nuevo sprite desde una imagen en el computador.
+    //Recuperadas desde https://forum.unity.com/threads/generating-sprites-dynamically-from-png-or-jpeg-files-in-c.343735/
     public Sprite LoadNewSprite(string FilePath, float PixelsPerUnit = 100.0f)
     {
 

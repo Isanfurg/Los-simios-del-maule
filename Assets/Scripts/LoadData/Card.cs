@@ -5,8 +5,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 
+
 namespace JsonReaderYugi
 {   
+    //Clase que tiene la info de una carta
     [Serializable]
     public class Card
     {
@@ -85,12 +87,14 @@ namespace JsonReaderYugi
 
     }
 
+    //Clase padre auxiliar utilizada solo para serializar. Tiene una lista de cartas
     [Serializable]
     public class CardList 
     {
         public List<Card> cardList;
     }
 
+    //Clase que almacena los datos de un mazo junto a una lista de IDs de las cartas que contiene
     [Serializable]
     public class Deck
     {
