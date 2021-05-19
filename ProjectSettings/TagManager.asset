@@ -15,6 +15,7 @@ TagManager:
   - add
   - btnBorrar
   - cartasMazo
+  - enemy
   layers:
   - Default
   - TransparentFX

@@ -14,18 +14,26 @@ public class DropZone : MonoBehaviour, IDropHandler {
     {
         cardIn = null;
     }
-
-    public void atacar()
+    public void attack()
     {
-
+        
+        PlayerLife.playerLifeNow -= 10;
+        Image LifeP1 = GameObject.Find("LifeP1").GetComponent<Image>();
+        LifeP1.fillAmount = PlayerLife.playerLifeNow / PlayerLife.playerLife;
     }
+
     public void OnDrop(PointerEventData eventData){
-        Debug.Log("Card dropped");
+        //Debug.Log("Card dropped");
         DragDropCard card = eventData.pointerDrag.GetComponent<DragDropCard>();
 
         if(card != null && cardIn == null){
             //Verifica que la carta sea un monstruo
             GameObject cardDropped = card.gameObject;
+            
+            if(this.gameObject.transform.parent.gameObject.name.Equals("EnemyMat"))
+            {
+                attack();
+            }
             Sprite cardSprite = cardDropped.GetComponent<Image>().sprite;
             string cardID = cardSprite.name;
             Card cardInfo = SearchCard(cardID);
@@ -35,7 +43,11 @@ public class DropZone : MonoBehaviour, IDropHandler {
             {
                 card.returnPoint = this.transform;
                 cardIn = cardDropped;
-            } 
+            }
+            else
+            {
+                attack();
+            }
             //Destroy(card.gameObject.GetComponent<DragDropCard>());
         }
     }

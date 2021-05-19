@@ -7,9 +7,11 @@ public class DragDropCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 {
 
     public Transform returnPoint;
+
+    
     public void OnBeginDrag(PointerEventData eventData)
     {
-        Debug.Log("Start dragging");
+        //Debug.Log("Start dragging");
         returnPoint = this.transform.parent;
         this.transform.SetParent(this.transform.parent.parent);
         GetComponent<CanvasGroup>().blocksRaycasts = false;
@@ -17,13 +19,14 @@ public class DragDropCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
     public void OnDrag(PointerEventData eventData)
     {
-        Debug.Log("On dragging");
+        //Debug.Log("On dragging");
         this.transform.position = eventData.position;
+        
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log("End dragging");
+        //Debug.Log("End dragging");
         this.transform.SetParent(returnPoint);
         GetComponent<CanvasGroup>().blocksRaycasts = true;
     }

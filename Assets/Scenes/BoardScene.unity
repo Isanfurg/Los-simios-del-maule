@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 1876322}
   - component: {fileID: 1876324}
   - component: {fileID: 1876323}
+  - component: {fileID: 1876325}
   m_Layer: 5
   m_Name: BackgroundLifeP2
   m_TagString: Untagged
@@ -158,7 +159,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 526, y: -311}
+  m_AnchoredPosition: {x: -524, y: -306}
   m_SizeDelta: {x: 300.1303, y: 59.2956}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1876323
@@ -199,6 +200,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1876321}
   m_CullTransparentMesh: 1
+--- !u!114 &1876325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1876321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c30639936a1f7e4aa15b40cfdef427b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerLife: 4000
+  cardsLife: 
+  LifeP1: {fileID: 458744465}
 --- !u!1 &24182316
 GameObject:
   m_ObjectHideFlags: 0
@@ -1776,6 +1792,7 @@ GameObject:
   - component: {fileID: 943003731}
   - component: {fileID: 943003733}
   - component: {fileID: 943003732}
+  - component: {fileID: 943003734}
   m_Layer: 5
   m_Name: BackgroundLifeP1
   m_TagString: Untagged
@@ -1841,6 +1858,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 943003730}
   m_CullTransparentMesh: 1
+--- !u!114 &943003734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 943003730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c30639936a1f7e4aa15b40cfdef427b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerLife: 4000
+  cardsLife: 
+  LifeP1: {fileID: 1086775631}
 --- !u!1 &1019315589
 GameObject:
   m_ObjectHideFlags: 0
@@ -2586,7 +2618,7 @@ GameObject:
   - component: {fileID: 1903176064}
   m_Layer: 5
   m_Name: EnemyMat
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
