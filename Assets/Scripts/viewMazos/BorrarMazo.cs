@@ -37,6 +37,9 @@ public class BorrarMazo : MonoBehaviour
         
         File.Delete("Assets/Data/Decks/"+ nameBtn+".dat");
         //File.Delete("Assets/Data/Decks/" + nameBtn + ".meta.dat");
+
+        UIScenes changer = new UIScenes();
+        changer.LoadScene("viewMazosScene");
     }
    
 }
