@@ -5,21 +5,20 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
+//Clase para manejar el evento de click derecho, para cada carta del mazo, en la escena "Edit Deck"
 public class DeckCardClickEvents : MonoBehaviour, IPointerClickHandler
 {
-    // Start is called before the first frame update
+    
     static Deck deck;
     void Start()
     {
+        //Mazo que se está editando
         deck = RenderDeck.deck;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
+    //Al hacer click derecho sobre una carta del mazo que se esté editando, esta se elimina de la pantalla
+    //y también se borra su información dentro del mazo
     public void OnPointerClick(PointerEventData eventData)
     {
 
@@ -35,8 +34,4 @@ public class DeckCardClickEvents : MonoBehaviour, IPointerClickHandler
 
     }
 
-    private void RemoveCardId(string cardId)
-    {
-        
-    }
 }

@@ -5,6 +5,7 @@ using System.Net;
 using System.IO;
 using System.Collections.Generic;
 
+//Este spacename se utiliza solo cuando se quieren descargar cartas nuevas desde la API recuperada de https://db.ygoprodeck.com/
 namespace JsonReaderYugi
 {
    

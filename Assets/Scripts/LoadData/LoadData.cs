@@ -6,6 +6,8 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
+//Clase para deserializar los datos de las cartas y cargar sus imágenes correspondientes en memoria volátil
+//Esta clase hace uso del patrón de diseño Singleton
 public class LoadData : MonoBehaviour
 {
     private static CardList cards = null;
@@ -31,6 +33,7 @@ public class LoadData : MonoBehaviour
         
     }
 
+    //Retorna la instancia única de esta clase
     public static LoadData GetInstance()
     {
         if(instance == null)
@@ -41,7 +44,7 @@ public class LoadData : MonoBehaviour
         return instance;
     }
 
-    //
+    //Carga toda la información de las cartas junto con sus imágenes en la memoria volátil
     private void loadData()
     {   
         //Carga los datos por primera y única vez
@@ -69,7 +72,8 @@ public class LoadData : MonoBehaviour
         Debug.Log("smallcards size: " + smallCardsSprites.Count);
     }
 
-    //Carga una imagen cualquiera como sprite
+    //Funciones para cargar un nuevo sprite desde una imagen en el computador.
+    //Recuperadas desde https://forum.unity.com/threads/generating-sprites-dynamically-from-png-or-jpeg-files-in-c.343735/
     private Sprite LoadNewSprite(string FilePath, float PixelsPerUnit = 100.0f)
     {
 
@@ -101,6 +105,7 @@ public class LoadData : MonoBehaviour
         return null;                     // Return null if load failed
     }
 
+    //Getters y setters
     public List<Card> GetCardList() { return cardList; }
     public List<Sprite> GetBigSprites() { return bigCardsSprites; }
     public List<Sprite> GetSmallSprites() { return smallCardsSprites; }

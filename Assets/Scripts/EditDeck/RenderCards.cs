@@ -6,6 +6,7 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 
+//Clase que se encarga de mostrar las cartas disponibles para agregar al mazo en la escena "EditDeckScene"
 public class RenderCards : MonoBehaviour
 {
     public GameObject preFab;
@@ -14,41 +15,17 @@ public class RenderCards : MonoBehaviour
     static List<Sprite> smallCardsSprites;
     void Start()
     {
+        //Referencias a los datos cargados en memoria anteriormente
         LoadData instance = LoadData.GetInstance();
         cardList = instance.GetCardList();
         bigCardsSprites = instance.GetBigSprites();
         smallCardsSprites = instance.GetSmallSprites();
 
-
-
         RenderAvailableCards();
 
-
-
-        /*String path = "CardsID.txt";
-        CardsLoader cLoader = new CardsLoader();
-        cLoader.StartDownload(path);
-        String pathC = "cards.dat";
-        cards = Serializator.DeserializeCards(pathC);
-        List<JsonReaderYugi.Card> ListOfCards = cards.cardList;
-        foreach (JsonReaderYugi.Card card in ListOfCards)
-        {
-            card.ToString();
-        }*/
-
-        
-
-
-
-
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    //Busca el sprite pequeño (en baja resolución) de una carta dada su ID
     private Sprite GetSmallSprite(String id)
     {
         foreach(Sprite sprite in smallCardsSprites)
@@ -59,6 +36,7 @@ public class RenderCards : MonoBehaviour
         return null;
     }
 
+    //Muestra las cartas disponibles para ser agregadas al mazo que se está editando
     private void RenderAvailableCards()
     {
         GameObject smallCardImage;
