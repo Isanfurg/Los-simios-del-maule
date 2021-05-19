@@ -735,6 +735,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 595420261}
+  - component: {fileID: 595420262}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -756,6 +757,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &595420262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595420260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d00c8c91a6f9a44998c3cdff76ef644, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &755877225
 GameObject:
   m_ObjectHideFlags: 0
@@ -1952,7 +1965,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 595420262}
         m_TargetAssemblyTypeName: UIScenes, Assembly-CSharp
         m_MethodName: LoadScene
         m_Mode: 5
