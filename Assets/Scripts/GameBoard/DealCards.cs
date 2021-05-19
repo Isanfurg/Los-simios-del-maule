@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-
+using Assets.Scripts.GameBoard;
 public class DealCards : MonoBehaviour
 {
     const int CARDS_DEAL_COUNT = 6;
@@ -26,6 +26,7 @@ public class DealCards : MonoBehaviour
         bigCardsSprites = instance.GetBigSprites();
         smallCardsSprites = instance.GetSmallSprites();
         playerDeck = DeckClick.selectedDeck;
+        playerDeck.Cards.Shuffle();
         DealCardsPlayer();
        // Button btn1 = GameObject.FindGameObjectWithTag("DrawP1").GetComponent<Button>();
        // btn1.onClick.AddListener(() => { DrawCard(); });
