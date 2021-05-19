@@ -30,7 +30,7 @@ public class CardHover : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     //Cuando sale el puntero, la imagen grande se deshabilita
     public void OnPointerExit(PointerEventData eventData)
     {
-        CardView.enabled = false;
+        
     }
 
     //Busca el sprite grande de la carta dentro de la lista de sprites grandes

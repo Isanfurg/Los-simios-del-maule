@@ -5,12 +5,29 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class addMazo : MonoBehaviour
 {
     public static InputField input;
     public static string nameDeck;
+    private Boolean validateName(string name)
+    {
+        using (StreamReader leer = new StreamReader("Assets/Data/Dekcsnames.txt"))
+        {
+            while (!leer.EndOfStream)
+            {
+                string nameNew = leer.ReadLine();
+                Debug.Log(nameNew);
+                if (nameNew==name)
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
     public static void SerializeName(string name)
     {
         try
@@ -34,38 +51,28 @@ public class addMazo : MonoBehaviour
 
     public void TaskOnClick()
     {
-        input = GameObject.FindGameObjectWithTag("nameMazo").GetComponent<InputField>();
         TextWriter arch;
         arch = new StreamWriter("Assets/Data/Decks/"+input.text+".dat");
         nameDeck = input.text;
         SerializeName(nameDeck);
-
+        SceneManager.LoadScene("EditDecksScene");
     }
-    private Boolean validateName(string name)
+    public void add()
     {
-        using (StreamReader leer = new StreamReader("Assets/Data/Dekcsnames.txt"))
+        if (validateName(input.text))
         {
-            while (!leer.EndOfStream)
-            {
-                string nameNew = leer.ReadLine();
-                Debug.Log(nameNew);
-                if (nameNew.Equals(name))
-                {
-                    return false;
-                }
-            }
+            Button btn = GameObject.FindGameObjectWithTag("add").GetComponent<Button>();
+            btn.interactable = true;
+            string name = GameObject.FindGameObjectWithTag("nameMazo").GetComponent<InputField>().text;
+            btn.onClick.AddListener(() => { TaskOnClick(); });
+            
         }
-        return true;
     }
     // Start is called before the first frame update
     void Start()
     {
-        Button btn = GameObject.FindGameObjectWithTag("add").GetComponent<Button>();
-        string name = GameObject.FindGameObjectWithTag("nameMazo").GetComponent<InputField>().text;
-        if (validateName(name+"\n"))
-        {
-            btn.onClick.AddListener(() => { TaskOnClick(); });
-        }
+        input = GameObject.FindGameObjectWithTag("nameMazo").GetComponent<InputField>();
+        input.onEndEdit.AddListener(delegate { add(); });
         
     }
 

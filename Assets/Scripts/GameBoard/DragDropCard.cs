@@ -12,23 +12,24 @@ public class DragDropCard : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     //Cuando empieza el arrastrado
     public void OnBeginDrag(PointerEventData eventData)
     {
-        Debug.Log("Start dragging");
+        //Debug.Log("Start dragging");
         returnPoint = this.transform.parent;
         this.transform.SetParent(this.transform.parent.parent);
         GetComponent<CanvasGroup>().blocksRaycasts = false;
     }
 
-    //Mientras se está arrastrando
+    //Mientras se estï¿½ arrastrando
     public void OnDrag(PointerEventData eventData)
     {
-        Debug.Log("On dragging");
+        //Debug.Log("On dragging");
         this.transform.position = eventData.position;
+        
     }
 
     //Cuando se termina el arrastrado
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log("End dragging");
+        //Debug.Log("End dragging");
         this.transform.SetParent(returnPoint);
         GetComponent<CanvasGroup>().blocksRaycasts = true;
     }
