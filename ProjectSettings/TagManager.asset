@@ -17,6 +17,7 @@ TagManager:
   - cartasMazo
   - DrawP1
   - DrawP2
+  - enemy
   layers:
   - Default
   - TransparentFX

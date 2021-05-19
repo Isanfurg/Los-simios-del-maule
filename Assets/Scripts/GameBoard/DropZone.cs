@@ -17,12 +17,26 @@ public class DropZone : MonoBehaviour, IDropHandler{
     }
 
     //Cuando se suelta la carta, la zona de monstruos intersectada pasa a albergar esa carta
+    public void attack()
+    {
+        
+        PlayerLife.playerLifeNow -= 400;
+        Image LifeP1 = GameObject.Find("LifeP1").GetComponent<Image>();
+        LifeP1.fillAmount = PlayerLife.playerLifeNow / PlayerLife.playerLife;
+    }
+
     public void OnDrop(PointerEventData eventData){
+        //Debug.Log("Card dropped");
         DragDropCard card = eventData.pointerDrag.GetComponent<DragDropCard>();
 
         if(card != null && cardIn == null){
             //Verifica que la carta sea un monstruo
             GameObject cardDropped = card.gameObject;
+            
+            if(this.gameObject.transform.parent.gameObject.name.Equals("EnemyMat"))
+            {
+                attack();
+            }
             Sprite cardSprite = cardDropped.GetComponent<Image>().sprite;
             string cardID = cardSprite.name;
             Card cardInfo = SearchCard(cardID);
@@ -33,12 +47,12 @@ public class DropZone : MonoBehaviour, IDropHandler{
                 card.returnPoint = this.transform;
                 cardIn = cardDropped;
             }
-                
-            
+            else
+            {
+                attack();
+            }
             //Destroy(card.gameObject.GetComponent<DragDropCard>());
         }
-
-
     }
 
     //Busca los datos de una carta dada su id
