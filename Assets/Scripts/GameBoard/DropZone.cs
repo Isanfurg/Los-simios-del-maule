@@ -20,7 +20,7 @@ public class DropZone : MonoBehaviour, IDropHandler{
     public void attack()
     {
         
-        PlayerLife.playerLifeNow -= 10;
+        PlayerLife.playerLifeNow -= 400;
         Image LifeP1 = GameObject.Find("LifeP1").GetComponent<Image>();
         LifeP1.fillAmount = PlayerLife.playerLifeNow / PlayerLife.playerLife;
     }
